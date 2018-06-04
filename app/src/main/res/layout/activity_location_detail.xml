@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <import type="com.mylocations.utils.LocationUtils"/>
+
+        <variable
+            name="viewModel"
+            type="com.mylocations.ui.viewmodel.LocationDetailViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activities.AddLocationActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_main"/>
+
+        <View
+            android:id="@+id/viewCompo"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/toolbar"
+            android:background="@color/divider"/>
+
+
+        <RelativeLayout
+            android:id="@+id/rlLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewCompo"
+            android:paddingBottom="10dp"
+            >
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_custom_location"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/colorAccentLite"
+                android:drawableTop="@drawable/ic_location"
+                android:fontFamily="@font/aller_display"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:text="@{viewModel.location.locationName}"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp"
+                tools:text="Sydney Harbour Bridge"/>
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+                android:text="@{viewModel.location.address}"
+                android:textColor="@color/secondary_text"
+                tools:text="Sydney Harbour Bridge"/>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/rlLocation"
+            android:background="@color/divider"
+            />
+
+
+        <TextView
+            android:id="@+id/notes_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view2"
+            android:layout_margin="10dp"
+            android:text="@string/location_notes"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:fontFamily="@font/aller_bld_itc"/>
+
+        <ImageView
+            android:id="@+id/editButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/notes_title"
+            android:layout_marginRight="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.startEdit()}"
+            android:src="@drawable/ic_edit"
+            android:visibility="@{viewModel.editing ? View.INVISIBLE : View.VISIBLE}"/>
+
+        <ImageView
+            android:id="@+id/editClose"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/notes_title"
+            android:layout_marginRight="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.stopEdit()}"
+            android:src="@drawable/ic_close"
+            android:visibility="@{viewModel.editing ? View.VISIBLE : View.INVISIBLE}"/>
+
+
+        <EditText
+            android:id="@+id/notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/notes_title"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:enabled="@{viewModel.editing ? true : false}"
+            android:gravity="top"
+            android:lines="2"
+            android:maxLines="2"
+            android:tag="@string/location_notes"
+            android:text="@={viewModel.notes}"
+            android:textColor="@color/md_black_1000"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/edit"
+            style="@style/submitText"
+            android:layout_alignParentBottom="true"
+            android:onClick="@{() -> viewModel.updateNotes()}"
+            android:text="@string/edit_notes"
+            android:visibility="@{viewModel.editing ? View.VISIBLE : View.INVISIBLE}"
+            android:fontFamily="@font/aller_bld_itc"
+            />
+
+    </RelativeLayout>
+</layout>

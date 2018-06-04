@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+
+    >
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <import type="com.mylocations.utils.LocationUtils"/>
+
+        <variable
+            name="viewModel"
+            type="com.mylocations.ui.model.LocationListItem"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="@dimen/activity_right_margin"
+        android:layout_marginLeft="@dimen/activity_left_margin"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="5dp"
+        app:contentPadding="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/location_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:drawablePadding="5dp"
+                android:drawableRight="@{viewModel.location.type == 1 ? @drawable/ic_default_location : @drawable/ic_custom_location}"
+                android:fontFamily="@font/aller_display"
+                android:text="@{viewModel.location.locationName}"
+                android:textColor="@color/primary_text"
+                android:textSize="22sp"
+                tools:text="Sydney"/>
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/location_name"
+                android:layout_marginTop="5dp"
+                android:layout_toLeftOf="@+id/distance"
+                android:ellipsize="end"
+                android:fontFamily="@font/aller_bld_itc"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="@{viewModel.location.address}"
+                android:textColor="@color/secondary_text"/>
+
+            <TextView
+                android:id="@+id/distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:drawablePadding="7dp"
+                android:drawableTop="@drawable/ic_my_location"
+                android:textColor="@color/colorAccent"
+                android:fontFamily="@font/aller_italic_lite"
+                android:padding="3dp"
+                android:text="@{viewModel.distanceString}"
+                tools:text="88888.3 km"/>
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</layout>

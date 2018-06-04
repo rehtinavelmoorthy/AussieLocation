@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Aussie Location</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="add_location">Save Location</string>
+    <string name="edit">Edit</string>
+    <string name="base_url">http://bit.ly/</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="location_name">Location Name</string>
+    <string name="location_notes">Add Info</string>
+    <string name="edit_notes">Update Notes</string>
+    <string name="add_location_title">Add Location</string>
+    <string name="location_detail">Location Details</string>
+    <string name="select_to_continue">Press here to add</string>
+    <string name="drop_pin">Long press on the pin to drag and drop at a location.</string>
+    <string name="location_added">Location Added</string>
+    <string name="network_connection">Turn on your internet to view the map</string>
+    <string name="something_wrong">Something went wrong. Please try again</string>
+
+    <string name="location_list">Explore Locations.</string>
+    <string name="no_location_found">No Locations found to explore!</string>
+</resources>
