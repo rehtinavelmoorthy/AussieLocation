@@ -28,14 +28,21 @@ object LocationUtils {
       */
     fun getAddressFromLatLng(geocoder: Geocoder?, latitude: Double, longitude: Double): String{
         val addressList = geocoder?.getFromLocation(latitude, longitude, 1)
+<<<<<<< HEAD
         addressList?.let {
+=======
+        if (addressList != null && addressList.size > 0) {
+>>>>>>> f519e2925f312af79c3fbdf5d80044e65be92f9f
             val address = addressList[0]
             val sb = StringBuffer()
             sb.append(if (address.getAddressLine(0) != null) address.getAddressLine(0) else "")
             //sb.append(if (address.countryName != null) address.countryName else "")
             return sb.toString()
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f519e2925f312af79c3fbdf5d80044e65be92f9f
         return "Address not updated"
     }
 

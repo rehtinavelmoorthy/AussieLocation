@@ -37,10 +37,7 @@ class AddLocationActivity : BaseActivity() {
             val address = intent.getParcelableExtra<Address>(LocationUtils.EXTRA_ADDRESS)
             viewModel.setAddress(address)
         }
-       /* if (intent != null) {
-            val address = intent.getParcelableExtra<Address>(LocationUtils.EXTRA_ADDRESS)
-            viewModel.setAddress(address)
-        }*/
+
         viewModel.isLocationAdded().observe(this, Observer { locationAdded ->
             if (locationAdded == true) {
                 Toast.makeText(this, getString(R.string.location_added), Toast.LENGTH_SHORT).show()

@@ -58,7 +58,10 @@ class AddLocationViewModel : ViewModel() {
      * Also notifies the view with the help of locationAdded.
      */
     fun saveLocation() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> f519e2925f312af79c3fbdf5d80044e65be92f9f
         if (name.get() != null) {
             dataHandler.addLocation(CustomLocation(name.get(), if (notes.get() != null) notes.get() else "Notes: ${name.get()}", address!!.latitude, address!!.longitude, addressString.get(), LocationUtils.LOCATION_TYPE_CUSTOM))
             locationAdded.value = true

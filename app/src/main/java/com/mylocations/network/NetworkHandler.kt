@@ -10,7 +10,7 @@ import java.util.concurrent.Executors
  * Remote DataHandler acts as the medium to communicate to web services and returns the
  * results to main DataHandler
  */
-class NetworkHandler(val asset: AssetManager) {
+class NetworkHandler(val asset : AssetManager) {
 
     //Executor for performing work in a separate thread.
     private val executor: Executor
@@ -22,10 +22,10 @@ class NetworkHandler(val asset: AssetManager) {
     /**
      * Convert json string to ResponseModel object and notify the dataHandler.
      */
-    fun getLocationsFromFile(onRemoteDataReadyCallback: OnRemoteDataReadyCallback) {
-        executor.execute({
+    fun getLocationsFromFile(onRemoteDataReadyCallback: OnRemoteDataReadyCallback){
+        executor.execute( {
             val gson = Gson()
-            val responseModel: ResponseModel = gson.fromJson(readJSONFromAssets(), ResponseModel::class.java)
+            val responseModel : ResponseModel = gson.fromJson(readJSONFromAssets(), ResponseModel::class.java)
             onRemoteDataReadyCallback.onRemoteDataReady(responseModel)
         })
     }
@@ -33,7 +33,7 @@ class NetworkHandler(val asset: AssetManager) {
     /**
      * Utility function to read the json file from assets and return string.
      */
-    fun readJSONFromAssets(): String {
+    fun readJSONFromAssets() : String{
         val inputStream = asset.open("locations.json")
         val size = inputStream.available()
         val buffer = ByteArray(size)
@@ -46,6 +46,6 @@ class NetworkHandler(val asset: AssetManager) {
 /**
  * Callback interface to notify the calling class after importing json file to object
  */
-interface OnRemoteDataReadyCallback {
+interface OnRemoteDataReadyCallback{
     fun onRemoteDataReady(responseModel: ResponseModel)
 }

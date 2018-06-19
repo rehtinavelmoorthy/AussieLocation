@@ -237,19 +237,6 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragL
         }
     }
 
-    /* private fun startListActivity() {
-         mapParameters.listItemLive.value = false
-
-         if (mLastKnownLocation != null) {
-             val intent = Intent(this, LocationListActivity::class.java)
-             intent.putExtra(LocationUtils.EXTRA_ADDRESS, mLastKnownLocation)
-             startActivity(intent)
-             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-
-         } else {
-             checkLocationPermission()
-         }
-     }*/
 
     /**
      * Start add location activity passing the Address object which contains latitude and longitude
@@ -265,15 +252,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragL
         } ?: run {
             showToast(getString(R.string.something_wrong))
         }
-        /* if (mMapBinding.markedLocation.tag != null) {
-             val intent = Intent(this, AddLocationActivity::class.java)
-             intent.putExtra(LocationUtils.EXTRA_ADDRESS, mMapBinding.markedLocation.tag as Address)
-             mapParameters.address.set(null)
-             startActivity(intent)
-             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-         } else {
-             showToast(getString(R.string.something_wrong))
-         }*/
+
     }
 
     override fun onMarkerDragStart(marker: Marker) {
@@ -296,12 +275,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragL
             setMarkerDetails(latLng)
         }
 
-        /*try {
-            val latLng = marker.position
-            setMarkerDetails(latLng)
-        } catch (e: Exception) {
 
-        }*/
 
     }
 
@@ -326,34 +300,9 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragL
                 mapParameters.markedText.set("")
                 mapParameters.address.set(null)
             }
-            /*if (addressList != null && addressList.size > 0) {
-                val address = addressList[0]
-                val sb = StringBuffer()
-                sb.append(if (address.getAddressLine(0) != null) address.getAddressLine(0) else "")
-                mapParameters.markedText.set(sb.toString())
-                mapParameters.address.set(address)
-            } else {
-                mapParameters.markedText.set("")
-                mapParameters.address.set(null)
-            }*/
+
         }
-        /* try {
-             val geocoder = Geocoder(applicationContext, Locale.getDefault())
-             val addressList = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
-             if (addressList != null && addressList.size > 0) {
-                 val address = addressList[0]
-                 val sb = StringBuffer()
-                 sb.append(if (address.getAddressLine(0) != null) address.getAddressLine(0) else "")
-                 mapParameters.markedText.set(sb.toString())
-                 mapParameters.address.set(address)
-             } else {
-                 mapParameters.markedText.set("")
-                 mapParameters.address.set(null)
-             }
-         } catch (e: Exception) {
-             mapParameters.markedText.set("")
-             mapParameters.address.set(null)
-         }*/
+
     }
 
     /**
